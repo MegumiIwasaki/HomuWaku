@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  post_homework_id: 1
+  file: 
+  evaluation: 1
+  comment: MyText
+
+two:
+  student_id: 1
+  post_homework_id: 1
+  file: 
+  evaluation: 1
+  comment: MyText
