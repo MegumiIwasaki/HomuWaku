@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <% if teacher_signed_in? %>
+        <%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete %>
+    <% elsif student_signed_in? %>
+        <%= link_to 'ログアウト', destroy_student_session_path, method: :delete %>
+    <% else %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

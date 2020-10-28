@@ -1,2 +1,6 @@
 <h1>Keywords#new</h1>
 <p>Find me in app/views/keywords/new.html.erb</p>
+<%= form_with model: @keyword do |form| %>
+  <%= form.text_field :words %>
+  <%= form.submit %>
+<% end %>

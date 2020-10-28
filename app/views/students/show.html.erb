@@ -1,2 +1,13 @@
 <h1>Students#show</h1>
 <p>Find me in app/views/students/show.html.erb</p>
+<h2>マイページ</h2>
+<%= link_to "編集する", edit_student_path(@student), class: "btn btn-success ml2" %>
+
+<p>名前</p>
+<p><%= @student.name %></p>
+<p>学校</p>
+<p><%= @student.school %></p>
+<p>クラス</p>
+<p><%= @student.grade %></p>
+<p>かぞくのメールアドレス</p>
+<p><%= @student.email %></p>

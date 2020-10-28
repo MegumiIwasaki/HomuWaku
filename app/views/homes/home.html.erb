@@ -1,2 +1,14 @@
-<h1>Homes#home</h1>
+<h1>Students_Homes#home</h1>
 <p>Find me in app/views/homes/home.html.erb</p>
+<p>とうろく内容をかくにんする場合は</p>
+<%= link_to "こちら", students_my_page_path, class: "btn btn-success ml2" %>
+<% if @student.keyword.nil? %>
+<p>あいことば を とうろくしよう！</p>
+<%= link_to "とうろく する", new_keyword_path, class: "btn btn-success ml2" %>
+<% elsif @student.keyword.is_active == 0 %>
+<p>あいことば を かくにんちゅうだよ！</p>
+<% elsif @student.keyword.is_active == 2 %>
+<p>あいことば を もういちど先生にかくにんしてね</p>
+<% else %>
+<p>あいことば を かくにんしたよ！ようこそほむわくへ！</p>
+<% end %>

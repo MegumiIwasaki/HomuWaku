@@ -1,2 +1,17 @@
 <h1>Students#edit</h1>
 <p>Find me in app/views/students/edit.html.erb</p>
+<%= form_with model: @student, url: {controller: 'students', action: 'update' } do |form| %>
+  <p>名前</p>
+  <p><%= form.text_field :name, :placeholder =>"#{@student.name}" %></p>
+
+  <p>学校</p>
+  <p><%= form.text_field :school, :placeholder =>"#{@student.school}" %></p>
+
+  <p>学年クラス</p>
+  <p><%= form.text_field :grade, :placeholder =>"#{@student.grade}" %></p>
+
+　<p>かぞくのメールアドレス</p>
+  <p><%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@student.email}" %></p>
+
+  <%= form.submit %>
+<% end %>

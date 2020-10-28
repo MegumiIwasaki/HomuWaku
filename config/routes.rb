@@ -12,23 +12,27 @@ Rails.application.routes.draw do
 }
 
   root 'abouts#about'
-  get '/home' => 'homes#home', as: 'home'
-  get 'students/my_page' => 'students#show', as: 'student_my_page'
+  get '/home' => 'homes#home', as: 'students_home'
+  get 'students/my_page' => 'students#show', as: 'students_my_page'
+  get 'students/information/edit' => 'students#edit', as: 'edit_student'
+  patch 'students/information' => 'students#update', as: 'update_student'
+  put 'students/information' => 'students#update'
   patch 'students/withdraw' => 'students#withdraw', as: 'withdraw_student'
   put 'students/withdraw' => 'students#withdraw'
-  resources :students, only: [:edit, :update]
   resources :submissions, except: [:destroy]
   resources :keywords, only: [:new, :create]
   resources :post_homeworks, only: [:index, :show]
 
 
-  get 'teachers/my_page' => 'teachers#show', as: 'teacher_my_page'
+  get 'teachers/my_page' => 'teachers#show', as: 'teachers_my_page'
+  get 'teachers/information/edit' => 'teachers#edit', as: 'edit_teacher'
+  patch 'teachers/information' => 'teachers#update', as: 'update_teacher'
+  put 'teachers/information' => 'teachers#update'
   patch 'teachers/withdraw' => 'teachers#withdraw', as: 'withdraw_teacher'
   put 'teachers/withdraw' => 'teachers#withdraw'
-  resources :teachers, only: [:edit, :update]
 
   namespace :teachers do
-    get 'teachers/home' => 'teachers#show', as: 'mypage'
+    get 'teachers/home' => 'homes#home', as: 'home'
     resources :post_homeworks, except: [:destroy]
     resources :submissions, except: [:destroy, :create, :new]
     resources :students, only: [:index, :show]
