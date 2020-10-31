@@ -1,2 +1,14 @@
 <h1>Teachers::Homes#home</h1>
 <p>Find me in app/views/teachers/homes/home.html.erb</p>
+<p>登録内容を確認する場合は</p>
+<%= link_to "こちら", teacher_my_page_path, class: "btn btn-success ml2" %>
+
+<p>宿題投稿一覧は</p>
+<%= link_to "こちら", teachers_post_homeworks_path, class: "btn btn-success ml2" %>
+
+<p>生徒一覧は</p>
+<%= link_to "こちら", teachers_students_path, class: "btn btn-success ml2" %>
+
+<p>あいことば一覧は</p>
+<%= link_to "こちら", teachers_keywords_path, class: "btn btn-success ml2" %>
+

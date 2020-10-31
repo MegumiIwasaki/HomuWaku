@@ -1,2 +1,21 @@
 <h1>Teachers::Keywords#index</h1>
 <p>Find me in app/views/teachers/keywords/index.html.erb</p>
+
+<% @students.each do |student| %>
+ <% if student.keyword.is_active == 0 %>
+<p>
+  <strong>名前:</strong>
+  <%= link_to student.name, teachers_keyword_path(student.id), class: "btn btn-default" %>
+</p>
+
+<p>
+  <strong>学年クラス:</strong>
+  <%= student.grade %>
+</p>
+
+<p>
+  <strong>保護者のメールアドレス:</strong>
+  <%= student.email %>
+</p>
+ <% end %>
+<% end %>

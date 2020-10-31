@@ -1,2 +1,11 @@
 <h1>Teachers#show</h1>
 <p>Find me in app/views/teachers/show.html.erb</p>
+<h2>マイページ</h2>
+<%= link_to "編集する", edit_teacher_path(@teacher), class: "btn btn-success ml2" %>
+
+<p>名前</p>
+<p><%= @teacher.name %></p>
+<p>学校</p>
+<p><%= @teacher.school %></p>
+<p>メールアドレス</p>
+<p><%= @teacher.email %></p>

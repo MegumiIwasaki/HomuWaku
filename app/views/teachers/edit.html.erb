@@ -1,2 +1,14 @@
 <h1>Teachers#edit</h1>
 <p>Find me in app/views/teachers/edit.html.erb</p>
+<%= form_with model: @teacher, url: {controller: 'teachers', action: 'update' } do |form| %>
+  <p>名前</p>
+  <p><%= form.text_field :name, :placeholder =>"#{@teacher.name}" %></p>
+
+  <p>学校</p>
+  <p><%= form.text_field :school, :placeholder =>"#{@teacher.school}" %></p>
+
+　<p>メールアドレス</p>
+  <p><%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@teacher.email}" %></p>
+
+  <%= form.submit %>
+<% end %>
