@@ -1,5 +1,5 @@
-<h1>Students_Homes#home</h1>
-<p>Find me in app/views/homes/home.html.erb</p>
+<div class = "student">
+
 <p>とうろく内容をかくにんする場合は</p>
 <%= link_to "こちら", student_my_page_path, class: "btn btn-success ml2" %>
 <% if @student.keyword.nil? %>
@@ -11,4 +11,11 @@
 <p>あいことば を もういちど先生にかくにんしてね</p>
 <% else %>
 <p>あいことば を かくにんしたよ！ようこそほむわくへ！</p>
+
+<%= link_to "宿題を かくにん する", post_homeworks_path, class: "btn btn-success ml2" %>
+
+<%= link_to "提出した宿題を かくにん する", submissions_path, class: "btn btn-success ml2" %>
+
 <% end %>
+
+</div>

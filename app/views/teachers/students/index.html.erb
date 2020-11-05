@@ -1,21 +1,37 @@
-<h1>Teachers::Students#index</h1>
-<p>Find me in app/views/teachers/students/index.html.erb</p>
+<div class="teacher">
+  <div class="text-center">
+    <h4>担当している生徒一覧</h4>
+  </div>
 
-<% @students.each do |student| %>
- <% if student.keyword.is_active == 1 %>
-<p>
-  <strong>名前:</strong>
-  <%= student.name %>
-</p>
+  <table class="hmwk text-center">
+    <tr class="hmwk-title">
+      <th class="hmwk-list">生徒名</th>
+      <th class="hmwk-list">学年クラス</th>
+      <th class="hmwk-list">保護者のメールアドレス</th>
+    </tr>
 
-<p>
-  <strong>学年クラス:</strong>
-  <%= student.grade %>
-</p>
+    <% @students.each do |student| %>
+      <% if student.keyword.is_active == 1 %>
 
-<p>
-  <strong>保護者のメールアドレス:</strong>
-  <%= student.email %>
-</p>
- <% end %>
-<% end %>
+        <tr>
+          <td class="hmwk-data">
+            <%= student.name %>
+          </td>
+          <td class="hmwk-data">
+            <%= student.grade %>
+          </td>
+          <td class="hmwk-data">
+            <%= student.email %>
+          </td>
+        </tr>
+        <% end %>
+
+          <% end %>
+  </table>
+
+  <div class="text-center box-btn">
+    <%= link_to "あいことばを確認する", teachers_keywords_path, class: "btn btn-success ml2" %>
+      <%= link_to "前ページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+  </div>
+
+</div>

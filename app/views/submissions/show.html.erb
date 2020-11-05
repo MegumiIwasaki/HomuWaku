@@ -1,2 +1,31 @@
 <h1>Submissions#show</h1>
 <p>Find me in app/views/submissions/show.html.erb</p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @submission.post_homework.name %>
+</p>
+
+<p>
+  <strong>ファイル:</strong>
+  <%= link_to 'download', submission_download_path(@submission.id), class: "btn btn-default" %>
+</p>
+
+<% if @submission.evaluation == 0 %>
+<p>先生が　かくにんちゅうだよ！</p>
+
+<% else %>
+
+<p>先生が　かくにんしたよ！</p>
+<p>
+  <strong>評価:</strong>
+  <%= @submission.evaluation %>
+</p>
+
+<p>
+  <strong>コメント:</strong>
+  <%= @submission.comment %>
+</p>
+
+
+<% end %>

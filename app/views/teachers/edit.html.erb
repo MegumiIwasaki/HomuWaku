@@ -1,14 +1,33 @@
-<h1>Teachers#edit</h1>
-<p>Find me in app/views/teachers/edit.html.erb</p>
-<%= form_with model: @teacher, url: {controller: 'teachers', action: 'update' } do |form| %>
-  <p>名前</p>
-  <p><%= form.text_field :name, :placeholder =>"#{@teacher.name}" %></p>
+<div class="teacher">
+  <div class="text-center box-btn">
 
-  <p>学校</p>
-  <p><%= form.text_field :school, :placeholder =>"#{@teacher.school}" %></p>
+    <h4>登録情報の編集</h4>
 
-　<p>メールアドレス</p>
-  <p><%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@teacher.email}" %></p>
+    <%= form_with model: @teacher, url: {controller: 'teachers', action: 'update' } do |form| %>
+      <table class="infomation">
+        <tr class="info-title">
+          <th class="info-list">名前</th>
+          <td class="info-data">
+            <%= form.text_field :name, :placeholder =>"#{@teacher.name}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="info-list">学校</th>
+          <td class="info-data">
+            <%= form.text_field :school, :placeholder =>"#{@teacher.school}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="info-list">メールアドレス</th>
+          <td class="info-data">
+            <%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@teacher.email}" %>
+          </td>
+        </tr>
+      </table>
 
-  <%= form.submit %>
-<% end %>
+      <%= form.submit "編集内容を更新",class: "btn btn-success teacher-icon-box" %>
+        <%= link_to "前ページへ戻る", teacher_my_page_path, class: "btn btn-success ml2" %>
+          <% end %>
+
+  </div>
+</div>

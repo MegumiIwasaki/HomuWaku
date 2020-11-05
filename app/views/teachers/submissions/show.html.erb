@@ -1,2 +1,65 @@
-<h1>Teachers::Submissions#show</h1>
-<p>Find me in app/views/teachers/submissions/show.html.erb</p>
+<div class="teacher">
+
+  <div class="text-center">
+    <h4>提出された宿題詳細内容</h4>
+  </div>
+
+
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="info-list">宿題名</th>
+      <td class="info-data">
+        <%= @submission.post_homework.name %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">生徒名</th>
+      <td class="info-data">
+        <%= @submission.student.name %>
+      </td>
+    </tr>
+
+    <% if @submission.evaluation == 0 %>
+      <%= form_with model: @submission, url: {controller: 'teachers/submissions', action: 'update' }, local: true do |form| %>
+
+        <tr class="info-title">
+          <th class="info-list">評価</th>
+          <td class="info-data">
+            <%= form.select :evaluation, [ ["不可",1], ["可", 2], ["良", 3], ["優良", 4] ], prompt: "ステータスを選択してください" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="info-list">コメント</th>
+          <td class="info-data">
+            <%= form.text_field :comment %>
+          </td>
+        </tr>
+  </table>
+
+  <%= form.submit "評価内容を登録する",class: "btn btn-success teacher-icon-box"%>
+    <% end %>
+
+      <% else %>
+
+        <tr class="info-title">
+          <th class="info-list">評価</th>
+          <td class="info-data">
+            <%= @submission.evaluation %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="info-list">コメント</th>
+          <td class="info-data">
+            <%= @submission.comment %>
+          </td>
+        </tr>
+        </table>
+
+        <% end %>
+
+
+          <div class="text-center box-btn">
+            <%= link_to "前ページへ戻る", teachers_submissions_path, class: "btn btn-success ml2" %>
+          </div>
+
+</div>

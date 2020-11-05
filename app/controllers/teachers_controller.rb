@@ -8,7 +8,7 @@ class TeachersController < ApplicationController
 
   def update
   	@teacher.update(teacher_params)
-  	redirect_to teachers_home_path
+  	redirect_to teacher_my_page_path
   end
 
   private

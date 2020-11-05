@@ -1,2 +1,21 @@
 <h1>Submissions#index</h1>
 <p>Find me in app/views/submissions/index.html.erb</p>
+<% @submissions.each do |submission| %>
+<p>
+  <strong>日付:</strong>
+  <%= submission.updated_at.strftime("%Y/%m/%d") %>
+</p>
+
+<p>
+  <strong>名前:</strong>
+  <%= submission.post_homework.name %>
+  <%= link_to submission.post_homework.name, submission_path(submission.id), class: "btn btn-default" %>
+</p>
+
+
+<p>
+  <strong>科目:</strong>
+  <%= submission.post_homework.subject %>
+</p>
+
+<% end %>

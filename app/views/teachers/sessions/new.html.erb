@@ -1,26 +1,36 @@
-<h2>ログイン画面</h2>
+<div class="text-center login">
+  <div class="list-group">
+    <div class="list-group-item list-group-item-success login-box">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= image_tag "top_teacher.PNG", :size =>'70x70', class: "teacher-icon-box", alt: "teacher" %>
+        <h3>ログイン画面</h3>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="field">
+            <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+            </div>
+            <% end %>
+
+              <div class="actions">
+                <%= f.submit "ログイン",class: "btn btn-success" %>
+              </div>
+              <% end %>
+
+                <div class="teacher_icon_box">
+                  <%= render "teachers/shared/links" %>
+                </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
-
-<%= render "teachers/shared/links" %>
+</div>

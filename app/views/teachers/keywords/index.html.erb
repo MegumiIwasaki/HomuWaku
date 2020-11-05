@@ -1,21 +1,80 @@
-<h1>Teachers::Keywords#index</h1>
-<p>Find me in app/views/teachers/keywords/index.html.erb</p>
+<div class="teacher">
 
-<% @students.each do |student| %>
- <% if student.keyword.is_active == 0 %>
-<p>
-  <strong>名前:</strong>
-  <%= link_to student.name, teachers_keyword_path(student.id), class: "btn btn-default" %>
-</p>
+  <div class="text-center">
+    <h4>未認証のあいことば一覧</h4>
+  </div>
 
-<p>
-  <strong>学年クラス:</strong>
-  <%= student.grade %>
-</p>
+  <% if @check %>
 
-<p>
-  <strong>保護者のメールアドレス:</strong>
-  <%= student.email %>
-</p>
- <% end %>
-<% end %>
+    <table class="hmwk text-center">
+      <tr class="hmwk-title">
+        <th class="hmwk-list">生徒名</th>
+        <th class="hmwk-list">学年クラス</th>
+        <th class="hmwk-list">保護者のメールアドレス</th>
+      </tr>
+
+      <% @students.each do |student| %>
+        <% if student.keyword.is_active == 0 %>
+          <tr>
+            <td class="hmwk-data">
+              <%= link_to student.name, teachers_keyword_path(student.id), class: "btn btn-success" %>
+            </td>
+            <td class="hmwk-data">
+              <%= student.grade %>
+            </td>
+            <td class="hmwk-data">
+              <%= student.email %>
+            </td>
+          </tr>
+
+          <% end %>
+            <% end %>
+    </table>
+
+    <% else %>
+
+      <div class="text-center box-btn">
+        <h4>未認証のあいことばはありません。</h4>
+      </div>
+
+      <% end %>
+
+        <div class="text-center box-btn">
+          <h4>認証済みのあいことば一覧</h4>
+        </div>
+
+        <table class="hmwk text-center">
+          <tr class="hmwk-title">
+            <th class="hmwk-list">生徒名</th>
+            <th class="hmwk-list">学年クラス</th>
+            <th class="hmwk-list">保護者のメールアドレス</th>
+            <th class="hmwk-list">認証結果</th>
+          </tr>
+
+          <% @students.each do |student| %>
+            <% if student.keyword.is_active != 0 %>
+
+              <tr>
+                <td class="hmwk-data">
+                  <%= student.name %>
+                </td>
+                <td class="hmwk-data">
+                  <%= student.grade %>
+                </td>
+                <td class="hmwk-data">
+                  <%= student.email %>
+                </td>
+                <td class="hmwk-data">
+                  <%= student.keyword.is_active %>
+                </td>
+              </tr>
+
+              <% end %>
+                <% end %>
+        </table>
+
+        <div class="text-center box-btn">
+          <%= link_to "トップページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+        </div>
+
+</div>

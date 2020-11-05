@@ -19,8 +19,12 @@ Rails.application.routes.draw do
   put 'students/information' => 'students#update'
   patch 'students/withdraw' => 'students#withdraw', as: 'withdraw_student'
   put 'students/withdraw' => 'students#withdraw'
-  resources :submissions, except: [:destroy]
+  get 'submissions/download/:id',to: "submissions#download",as: "submission_download"
+  resources :submissions, except: [:new, :destroy, :create]
+  get 'submissions/new/:id' => 'submissions#new', as: 'new_submission'
+  post 'submissions/create/:id' => 'submissions#create', as: 'create_submission'
   resources :keywords, only: [:new, :create]
+  get 'post_homeworks/download/:id',to: "post_homeworks#download",as: "download"
   resources :post_homeworks, only: [:index, :show]
 
 
@@ -35,6 +39,7 @@ Rails.application.routes.draw do
     get '/home' => 'homes#home', as: 'home'
     get 'post_homeworks/download/:id',to: "post_homeworks#download",as: "download"
     resources :post_homeworks, except: [:destroy]
+    get 'submissions/download/:id',to: "submissions#download",as: "submission_download"
     resources :submissions, except: [:destroy, :create, :new]
     resources :students, only: [:index, :show]
     resources :keywords, only: [:index, :show, :update]

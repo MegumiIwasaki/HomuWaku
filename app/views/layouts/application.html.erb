@@ -11,11 +11,21 @@
 
   <body>
     <% if teacher_signed_in? %>
-        <%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete %>
+        <header class = "clearfix">
+          <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete, class: "logout-box btn btn-success" %>
+        </header><!-- /header -->
     <% elsif student_signed_in? %>
-        <%= link_to 'ログアウト', destroy_student_session_path, method: :delete %>
+        <header class = "clearfix">
+          <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <%= link_to 'ログアウト', destroy_student_session_path, method: :delete, class: "logout-box btn btn-warning" %>
+        </header><!-- /header -->
     <% else %>
     <% end %>
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
+    <footer class = "text-center">Copyright © Infratop Inc. All Rights Reserved.</footer>
   </body>
 </html>

@@ -33,4 +33,8 @@ class Teachers::PostHomeworksController < ApplicationController
     params.require(:post_homework).permit(:name, :subject)
   end
 
+  def uploadfile_params
+    params.require(:post_homework).permit(:file)
+  end
+
 end

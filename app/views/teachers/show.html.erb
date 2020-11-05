@@ -1,11 +1,31 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
-<h2>マイページ</h2>
-<%= link_to "編集する", edit_teacher_path(@teacher), class: "btn btn-success ml2" %>
+<div class="teacher">
+  <div class="text-center box-btn">
+    <h4>マイページ</h4>
+  </div>
 
-<p>名前</p>
-<p><%= @teacher.name %></p>
-<p>学校</p>
-<p><%= @teacher.school %></p>
-<p>メールアドレス</p>
-<p><%= @teacher.email %></p>
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="info-list">名前</th>
+      <td class="info-data">
+        <%= @teacher.name %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">学校</th>
+      <td class="info-data">
+        <%= @teacher.school %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">メールアドレス</th>
+      <td class="info-data">
+        <%= @teacher.email %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="text-center box-btn">
+    <%= link_to "編集する", edit_teacher_path(@teacher), class: "btn btn-success ml2" %>
+      <%= link_to "前ページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+  </div>
+</div>

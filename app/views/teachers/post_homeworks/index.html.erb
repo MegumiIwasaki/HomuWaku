@@ -1,36 +1,70 @@
-<h1>Teachers::PostHomeworks#index</h1>
-<p>Find me in app/views/teachers/post_homeworks/index.html.erb</p>
-<%= form_with model: @post_homework_new, url: {controller: 'teachers/post_homeworks', action: 'create' }, local: true do |form| %>
-  <div>
-   <%= form.label :name %>
-   <%= form.text_field :name %>
+<div class="teacher post">
+
+  <div class="text-center box-btn">
+    <h4>宿題を投稿する</h4>
   </div>
-  <div>
-   <%= form.label :file %>
-   <%= form.file_field :file %>
-  </div>
-  <div>
-   <%= form.label :subject %>
-   <%= form.select :subject, [ [1,1], [2, 2], [3, 3 ] ,[4, 4], [5, 5], [6, 6] ], prompt: "科目を選択してください" %>
 
-  </div>
-  <%= form.submit %>
-<% end %>
+  <%= form_with model: @post_homework_new, url: {controller: 'teachers/post_homeworks', action: 'create' }, local: true do |form| %>
 
-<% @post_homeworks.each do |post_homework| %>
-<p>
-  <strong>名前:</strong>
-  <%= post_homework.name %>
-</p>
+    <table class="infomation">
+      <tr class="info-title">
+        <th class="info-list">宿題名</th>
+        <td class="info-data">
+          <%= form.text_field :name %>
+        </td>
+      </tr>
+      <tr class="info-title">
+        <th class="info-list">ファイル</th>
+        <td class="info-data">
+          <%= form.file_field :file %>
+        </td>
+      </tr>
+      <tr class="info-title">
+        <th class="info-list">科目名</th>
+        <td class="info-data">
+          <%= form.select :subject, [ ["国語",1], ["算数", 2], ["理科", 3 ] ,["社会", 4], ["英語", 5], ["その他", 6] ], :placeholder => "科目を選択してください" %>
+        </td>
+      </tr>
+    </table>
+    <div class="text-center btn-post">
+      <%= form.submit "宿題を投稿する",class: "btn btn-success" %>
+    </div>
+    <% end %>
 
-<p>
-  <strong>ファイル:</strong>
-  <%= link_to 'download', teachers_download_path(post_homework.id), class: "btn btn-default" %>
-</p>
+      <div class="text-center box-btn">
+        <h4>投稿した宿題一覧</h4>
+      </div>
 
-<p>
-  <strong>科目:</strong>
-  <%= post_homework.subject %>
-</p>
+      <table class="hmwk text-center">
+        <tr class="hmwk-title">
+          <th class="hmwk-list">投稿日</th>
+          <th class="hmwk-list">宿題名</th>
+          <th class="hmwk-list">ファイル</th>
+          <th class="hmwk-list">科目名</th>
+        </tr>
 
-<% end %>
+        <% @post_homeworks.each do |post_homework| %>
+
+          <tr>
+            <td class="hmwk-data">
+              <%= post_homework.created_at.strftime("%Y/%m/%d") %>
+            </td>
+            <td class="hmwk-data">
+              <%= post_homework.name %>
+            </td>
+            <td class="hmwk-data">
+              <%= link_to 'download', teachers_download_path(post_homework.id), class: "btn btn-success ml2" %>
+            </td>
+            <td class="hmwk-data">
+              <%= post_homework.subject %>
+            </td>
+          </tr>
+
+          <% end %>
+      </table>
+
+      <div class="text-center box-btn">
+        <%= link_to "前ページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+      </div>
+
+</div>

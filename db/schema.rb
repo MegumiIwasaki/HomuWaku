@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_131046) do
+ActiveRecord::Schema.define(version: 2020_11_02_104604) do
 
   create_table "keywords", force: :cascade do |t|
     t.integer "student_id", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_131046) do
     t.integer "post_homework_id", null: false
     t.binary "file", null: false
     t.integer "evaluation", default: 0, null: false
-    t.text "comment", null: false
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,2 +1,10 @@
 <h1>Submissions#new</h1>
 <p>Find me in app/views/submissions/new.html.erb</p>
+
+<%= form_with model: @submission, url: create_submission_path(@post_homework.id), local: true do |form| %>
+  <div>
+   <%= form.label :file %>
+   <%= form.file_field :file %>
+  </div>
+  <%= form.submit %>
+<% end %>
