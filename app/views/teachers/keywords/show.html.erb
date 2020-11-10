@@ -33,7 +33,7 @@
 
   <div class="text-center">
     <%= form_with scope: :keyword, url: teachers_keyword_path(), method: :patch, local: true do |form| %>
-      <%= form.select :is_active, [ ["認証済み", 1], ["認証不可", 2] ], prompt: "ステータスを選択してください" %>
+      <%= form.select :is_active, [ ["認証済み", "認証済み"], ["認証不可", "認証不可"] ], prompt: "ステータスを選択してください" %>
         <%= form.submit "認証情報を更新する", class: "btn btn-success" %>
           <% end %>
   </div>

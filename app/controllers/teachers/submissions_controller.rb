@@ -1,11 +1,9 @@
 class Teachers::SubmissionsController < ApplicationController
+  before_action :authenticate_teacher!
+
   def index
   	@teacher = current_teacher
   	@post_homeworks = @teacher.post_homeworks
-  end
-
-  def edit
-
   end
 
   def show
@@ -14,8 +12,11 @@ class Teachers::SubmissionsController < ApplicationController
 
   def update
     @submission = Submission.find(params[:id])
-    @submission.update(submission_params)
-    redirect_to teachers_submissions_path
+    if @submission.update(submission_params)
+         redirect_to teachers_submissions_path
+    else
+         render :show
+    end
   end
 
   def download
@@ -29,3 +30,4 @@ class Teachers::SubmissionsController < ApplicationController
     params.require(:submission).permit(:evaluation, :comment)
   end
 end
+

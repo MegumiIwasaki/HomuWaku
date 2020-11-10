@@ -12,12 +12,16 @@
   <body>
     <% if teacher_signed_in? %>
         <header class = "clearfix">
-          <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <%= link_to teachers_home_path do %>
+            <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <% end %>
           <%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete, class: "logout-box btn btn-success" %>
         </header><!-- /header -->
     <% elsif student_signed_in? %>
         <header class = "clearfix">
-          <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <%= link_to students_home_path do %>
+            <%= image_tag "icon.PNG", :size =>'80x80', class: "", alt: "icon" %>
+          <% end %>
           <%= link_to 'ログアウト', destroy_student_session_path, method: :delete, class: "logout-box btn btn-warning" %>
         </header><!-- /header -->
     <% else %>

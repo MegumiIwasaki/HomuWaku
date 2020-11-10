@@ -3,7 +3,7 @@
 
     <h4>登録情報の編集</h4>
 
-    <%= form_with model: @teacher, url: {controller: 'teachers', action: 'update' } do |form| %>
+    <%= form_with model: @teacher, url: {controller: 'teachers', action: 'update' }, local: true do |form| %>
       <table class="infomation">
         <tr class="info-title">
           <th class="info-list">名前</th>

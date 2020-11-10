@@ -1,5 +1,7 @@
 class SubmissionsController < ApplicationController
+  before_action :authenticate_student!
   before_action :set_homework, only: [:new, :create]
+
   def index
   	@student = current_student
   	@submissions = @student.submissions
@@ -7,9 +9,6 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.find(params[:id])
-  end
-
-  def edit
   end
 
   def new
@@ -23,8 +22,11 @@ class SubmissionsController < ApplicationController
   	file[:file] = uploadfile_params[:file].read
   	@submission.file = file[:file]
 
-  	@submission.save
-  	redirect_to students_home_path
+  	if @submission.save
+  	     redirect_to students_home_path
+    else
+         render :new
+    end
   end
 
   def download

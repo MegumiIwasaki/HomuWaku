@@ -19,13 +19,13 @@
       </td>
     </tr>
 
-    <% if @submission.evaluation == 0 %>
+    <% if @submission.evaluation == "評価待ち" %>
       <%= form_with model: @submission, url: {controller: 'teachers/submissions', action: 'update' }, local: true do |form| %>
 
         <tr class="info-title">
           <th class="info-list">評価</th>
           <td class="info-data">
-            <%= form.select :evaluation, [ ["不可",1], ["可", 2], ["良", 3], ["優良", 4] ], prompt: "ステータスを選択してください" %>
+            <%= form.select :evaluation, [ ["不可","不可"], ["可", "可"], ["良", "良"], ["優良", "優良"] ], prompt: "ステータスを選択してください" %>
           </td>
         </tr>
         <tr class="info-title">
@@ -36,7 +36,9 @@
         </tr>
   </table>
 
-  <%= form.submit "評価内容を登録する",class: "btn btn-success teacher-icon-box"%>
+       <div class="text-center">
+         <%= form.submit "評価内容を登録する",class: "btn btn-success teacher-icon-box"%>
+       </div>
     <% end %>
 
       <% else %>

@@ -1,17 +1,40 @@
-<h1>Students#edit</h1>
-<p>Find me in app/views/students/edit.html.erb</p>
-<%= form_with model: @student, url: {controller: 'students', action: 'update' } do |form| %>
-  <p>名前</p>
-  <p><%= form.text_field :name, :placeholder =>"#{@student.name}" %></p>
+<div class="student">
+  <div class="text-center box-btn">
 
-  <p>学校</p>
-  <p><%= form.text_field :school, :placeholder =>"#{@student.school}" %></p>
+  	<h4>登録情報の編集</h4>
+  	<h4>★かぞくの人といっしょにやろう！★</h4>
 
-  <p>学年クラス</p>
-  <p><%= form.text_field :grade, :placeholder =>"#{@student.grade}" %></p>
+    <%= form_with model: @student, url: {controller: 'students', action: 'update' }, local: true  do |form| %>
+      <table class="infomation">
+        <tr class="info-title">
+          <th class="student-list">名前</th>
+          <td class="info-data">
+            <%= form.text_field :name, :placeholder =>"#{@student.name}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">学校</th>
+          <td class="info-data">
+            <%= form.text_field :school, :placeholder =>"#{@student.school}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">学年クラス(全角)</th>
+          <td class="info-data">
+            <%= form.text_field :grade, :placeholder =>"#{@student.grade}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">かぞくの</br>メールアドレス</th>
+          <td class="info-data">
+            <%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@student.email}" %>
+          </td>
+        </tr>
+      </table>
 
-　<p>かぞくのメールアドレス</p>
-  <p><%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@student.email}" %></p>
+        <%= form.submit "編集内容を更新",class: "btn btn-warning teacher-icon-box" %>
+        <%= link_to "前ページへ戻る", student_my_page_path, class: "btn btn-warning ml2" %>
+    <% end %>
 
-  <%= form.submit %>
-<% end %>
+  </div>
+</div>

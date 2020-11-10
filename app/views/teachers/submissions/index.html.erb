@@ -36,7 +36,7 @@
             <td class="hmwk-data">
               <%= submission.evaluation %>
             </td>
-            <% if submission.evaluation != 0 %>
+            <% if submission.evaluation != "評価待ち" %>
               <td class="hmwk-data">
                 <%= link_to '評価を確認', teachers_submission_path(submission.id), class: "btn btn-success ml2" %>
               </td>

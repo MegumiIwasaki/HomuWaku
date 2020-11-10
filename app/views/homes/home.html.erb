@@ -1,21 +1,74 @@
 <div class = "student">
+	<div class="text-center">
+    <h4>トップページ</h4>
+  </div>
 
-<p>とうろく内容をかくにんする場合は</p>
-<%= link_to "こちら", student_my_page_path, class: "btn btn-success ml2" %>
-<% if @student.keyword.nil? %>
-<p>あいことば を とうろくしよう！</p>
-<%= link_to "とうろく する", new_keyword_path, class: "btn btn-success ml2" %>
-<% elsif @student.keyword.is_active == 0 %>
-<p>あいことば を かくにんちゅうだよ！</p>
-<% elsif @student.keyword.is_active == 2 %>
-<p>あいことば を もういちど先生にかくにんしてね</p>
-<% else %>
-<p>あいことば を かくにんしたよ！ようこそほむわくへ！</p>
+  <% if @student.keyword.is_active == "認証済み" %>
+    <div class="text-center">
+       <p>あいことば を かくにんしたよ！ようこそ ほむわく へ！</p>
+    </div>
+  <% end %>
 
-<%= link_to "宿題を かくにん する", post_homeworks_path, class: "btn btn-success ml2" %>
+  <div class="text-center">
+   <div class="card-deck">
 
-<%= link_to "提出した宿題を かくにん する", submissions_path, class: "btn btn-success ml2" %>
+    <div class="card">
+       <%= image_tag "student.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>登録内容を確認する</p>
+        <%= link_to "こちら", student_my_page_path, class: "btn btn-warning ml2" %>
+      </div>
+    </div>
+
+  <% if @student.keyword.nil? %>
+
+    <div class="card">
+       <%= image_tag "keyword.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>あいことば を とうろくしよう！</p>
+        <%= link_to "こちら", new_keyword_path, class: "btn btn-warning ml2" %>
+      </div>
+    </div>
+
+  <% elsif @student.keyword.is_active == "未認証" %>
+
+    <div class="card">
+       <%= image_tag "keyword.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>あいことば を かくにんちゅうだよ！</p>
+      </div>
+    </div>
+
+  <% elsif @student.keyword.is_active == "認証不可" %>
+
+    <div class="card">
+       <%= image_tag "keyword.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>あいことば を もういちど先生にかくにんしてね</p>
+      </div>
+    </div>
+
+  <% else %>
+
+     <div class="card">
+       <%= image_tag "post_hmwk.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>先生が出した宿題</p>
+        <%= link_to "こちら", post_homeworks_path, class: "btn btn-warning ml2" %>
+      </div>
+    </div>
+
+    <div class="card">
+       <%= image_tag "submission_hmwk.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>ていしゅつ した 宿題</p>
+        <%= link_to "こちら", submissions_path, class: "btn btn-warning ml2" %>
+      </div>
+    </div>
 
 <% end %>
+
+     </div>
+   </div>
 
 </div>

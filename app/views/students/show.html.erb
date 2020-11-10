@@ -1,13 +1,37 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
-<h2>マイページ</h2>
-<%= link_to "編集する", edit_student_path(@student), class: "btn btn-success ml2" %>
+<div class="student">
+  <div class="text-center box-btn">
+    <h4>マイページ</h4>
+  </div>
 
-<p>名前</p>
-<p><%= @student.name %></p>
-<p>学校</p>
-<p><%= @student.school %></p>
-<p>クラス</p>
-<p><%= @student.grade %></p>
-<p>かぞくのメールアドレス</p>
-<p><%= @student.email %></p>
+<table class="infomation">
+    <tr class="info-title">
+      <th class="student-list">名前</th>
+      <td class="info-data">
+        <%= @student.name %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="student-list">学校</th>
+      <td class="info-data">
+        <%= @student.school %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="student-list">学年クラス</th>
+      <td class="info-data">
+        <%= @student.grade %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="student-list">かぞくの</br>メールアドレス</th>
+      <td class="info-data">
+        <%= @student.email %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="text-center box-btn">
+    <%= link_to "編集する", edit_student_path(@student), class: "btn btn-warning ml2" %>
+      <%= link_to "前ページへ戻る", students_home_path, class: "btn btn-warning ml2" %>
+  </div>
+</div>

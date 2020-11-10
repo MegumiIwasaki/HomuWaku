@@ -1,4 +1,6 @@
 class Teachers::PostHomeworksController < ApplicationController
+  before_action :authenticate_teacher!
+
   def index
   	@teacher = current_teacher
   	@post_homeworks = @teacher.post_homeworks
@@ -13,14 +15,11 @@ class Teachers::PostHomeworksController < ApplicationController
   	file[:file] = uploadfile_params[:file].read
   	@post_homework_new.file = file[:file]
 
-  	@post_homework_new.save
-  	redirect_to teachers_home_path
-  end
-
-  def new
-  end
-
-  def show
+  	if @post_homework_new.save
+  	     redirect_to teachers_home_path
+    else
+        render :index
+    end
   end
 
   def download
@@ -38,3 +37,4 @@ class Teachers::PostHomeworksController < ApplicationController
   end
 
 end
+

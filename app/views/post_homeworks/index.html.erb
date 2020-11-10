@@ -1,35 +1,68 @@
-<h1>PostHomeworks#index</h1>
-<p>Find me in app/views/post_homeworks/index.html.erb</p>
+<div class = "student">
+
+  <div class="text-center box-btn">
+    <h4>先生が とうこう した宿題</h4>
+  </div>
+
+  <table class="hmwk text-center">
+    <tr class="hmwk-title">
+      <th class="hmwk-list student-color">日付</th>
+      <th class="hmwk-list student-color">宿題名</th>
+      <th class="hmwk-list student-color">先生名</th>
+      <th class="hmwk-list student-color">ファイル</th>
+      <th class="hmwk-list student-color">科目</th>
+      <th class="hmwk-list student-color"></th>
+    </tr>
+
 <% @post_homeworks.each do |post_homework| %>
-<% if @student.keyword.is_active == 1 && @student.school == post_homework.teacher.school %>
-<p>
-  <strong>日付:</strong>
-  <%= post_homework.created_at.strftime("%Y/%m/%d") %>
-</p>
+  <% if @student.keyword.is_active == "認証済み" && @student.school == post_homework.teacher.school %>
+      <tr>
+          <td class="hmwk-data">
+            <%= post_homework.created_at.strftime("%Y/%m/%d") %>
+          </td>
+          <td class="hmwk-data">
+            <%= post_homework.name %>
+          </td>
+          <td class="hmwk-data">
+            <%= post_homework.teacher.name %>
+          </td>
+          <td class="hmwk-data">
+            <%= link_to 'download', download_path(post_homework.id), class: "btn btn-warning" %>
+          </td>
+          <td class="hmwk-data">
+            <%= post_homework.subject %>
+          </td>
 
-<p>
-  <strong>名前:</strong>
-  <%= post_homework.name %>
-</p>
+    <% post_homework.submissions.each do |submission| %>
 
-<p>
-  <strong>ファイル:</strong>
-  <%= link_to 'download', download_path(post_homework.id), class: "btn btn-default" %>
-</p>
+      <% if submission.student.id == @student.id %>
+          <td class="hmwk-data">
+            <%= link_to 'かくにん する', submission_path(submission.id), class: "btn btn-warning" %>
+          </td>
+        </tr>
+      <% else %>
+          <td class="hmwk-data">
+            <%= link_to 'ていしゅつする', new_submission_path(post_homework.id), class: "btn btn-warning" %>
+          </td>
+        </tr>
+      <% end %>
 
-<p>
-  <strong>科目:</strong>
-  <%= post_homework.subject %>
-</p>
+    <% end %>
 
-<p>
-	<% if post_homework.submission.nil? %>
-     <strong>提出しよう</strong>
-     　　<%= link_to 'ていしゅつする', new_submission_path(post_homework.id), class: "btn btn-default" %>
-     <% else %>
-     <strong>確認する</strong>
-        <%= link_to 'かくにん する', submission_path(post_homework.submission.id), class: "btn btn-default" %>
-     <% end %>
-</p>
+    <% if post_homework.submissions.length == 0 %>
+          <td class="hmwk-data">
+            <%= link_to 'ていしゅつする', new_submission_path(post_homework.id), class: "btn btn-warning" %>
+          </td>
+        </tr>
+    <% end %>
+
+  <% end %>
 <% end %>
-<% end %>
+</table>
+
+      <div class="text-center box-btn">
+        <%= link_to "前ページへ戻る", students_home_path, class: "btn btn-warning ml2" %>
+      </div>
+
+
+</div>

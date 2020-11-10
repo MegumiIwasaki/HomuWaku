@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_student!
   before_action :set_current_student
   def show
   end
@@ -7,8 +8,11 @@ class StudentsController < ApplicationController
   end
 
   def update
-  	@student.update(student_params)
-  	redirect_to students_home_path
+  	if @student.update(student_params)
+  	     redirect_to students_home_path
+    else
+         render :edit
+    end
   end
 
   private

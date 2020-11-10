@@ -1,8 +1,10 @@
 class Teachers::KeywordsController < ApplicationController
+  before_action :authenticate_teacher!
+
   def index
   	@teacher = current_teacher
   	@students = Student.where(school: @teacher.school)
-    @check = @students.any?{|student| student.keyword.is_active == 0 }
+    @check = @students.any?{|student| student.keyword.is_active == "未認証" }
   end
 
   def show
@@ -20,3 +22,4 @@ class Teachers::KeywordsController < ApplicationController
       params.require(:keyword).permit(:is_active)
     end
 end
+

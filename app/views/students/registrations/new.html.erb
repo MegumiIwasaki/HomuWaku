@@ -1,30 +1,36 @@
-<h2>とうろく がめん</h2>
+<div class="text-center login">
+  <div class="list-group">
+    <div class="list-group-item list-group-item-warning login-box">
+
+     <%= image_tag "top_student.PNG", :size =>'70x70', class: "student-icon-box", alt: "student" %>
+     <h3>とうろく がめん</h3>
+     <strong>★かぞくの人 と いっしょに とうろくしよう！★</strong><br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "teachers/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <strong>名前</strong><br />
     <%= f.text_field :name, autofocus: true, :placeholder =>"山田太郎" %>
   </div>
 
   <div class="field">
-    <%= f.label :school %><br />
+    <strong>学校名</strong><br />
     <%= f.text_field :school, autofocus: true, :placeholder =>"あいうえお小学校" %>
   </div>
 
   <div class="field">
-    <%= f.label :grade %><br />
+    <strong>学年クラス(全角)</strong><br />
     <%= f.text_field :grade, autofocus: true, :placeholder =>"３−２" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <strong>かぞくのメールアドレス</strong><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder =>"kazoku@homuwaku.com" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <strong>パスワード</strong><br />
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -32,13 +38,17 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <strong>パスワード(確認)</strong><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "とうろく" %>
+    <%= f.submit "とうろく する",class: "btn btn-warning student-box"  %>
   </div>
 <% end %>
 
-<%= render "teachers/shared/links" %>
+<%= render "students/shared/links" %>
+
+    </div>
+  </div>
+</div>

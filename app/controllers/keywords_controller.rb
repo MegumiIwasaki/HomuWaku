@@ -1,4 +1,6 @@
 class KeywordsController < ApplicationController
+  before_action :authenticate_student!
+  
   def new
   	@keyword = Keyword.new
   end
@@ -6,9 +8,13 @@ class KeywordsController < ApplicationController
   def create
   	@keyword = Keyword.new(keyword_params)
   	@keyword.student_id = current_student.id
-  	@keyword.save
-  	redirect_to students_home_path
+  	if @keyword.save
+  	    redirect_to students_home_path
+    else
+        render :new
+    end
   end
+
 
   private
   def keyword_params

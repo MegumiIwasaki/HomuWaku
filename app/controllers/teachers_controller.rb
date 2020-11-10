@@ -1,5 +1,7 @@
 class TeachersController < ApplicationController
+  before_action :authenticate_teacher!
   before_action :set_current_teacher
+  
   def show
   end
 
@@ -7,8 +9,11 @@ class TeachersController < ApplicationController
   end
 
   def update
-  	@teacher.update(teacher_params)
-  	redirect_to teacher_my_page_path
+  	if @teacher.update(teacher_params)
+  	     redirect_to teacher_my_page_path
+    else
+         render :edit
+    end
   end
 
   private

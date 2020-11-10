@@ -1,31 +1,45 @@
-<h1>Submissions#show</h1>
-<p>Find me in app/views/submissions/show.html.erb</p>
+<div class = "student">
+  <div class="text-center box-btn">
+    <h4><%= @submission.post_homework.name %>の宿題について</h4>
+  </div>
 
-<p>
-  <strong>名前:</strong>
-  <%= @submission.post_homework.name %>
-</p>
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="student-list">ていしゅつした</br>ファイル</th>
+      <td class="info-data">
+        <%= link_to 'download', submission_download_path(@submission.id), class: "btn btn-warning" %>
+      </td>
+    </tr>
+  </table>
 
-<p>
-  <strong>ファイル:</strong>
-  <%= link_to 'download', submission_download_path(@submission.id), class: "btn btn-default" %>
-</p>
 
-<% if @submission.evaluation == 0 %>
-<p>先生が　かくにんちゅうだよ！</p>
+<% if @submission.evaluation == "評価待ち" %>
+<div class="text-center box-btn submission-btn">先生が かくにんちゅうだよ！</div>
 
 <% else %>
 
-<p>先生が　かくにんしたよ！</p>
-<p>
-  <strong>評価:</strong>
-  <%= @submission.evaluation %>
-</p>
+<div class="text-center box-btn submission-btn">先生が かくにんしたよ！</div>
 
-<p>
-  <strong>コメント:</strong>
-  <%= @submission.comment %>
-</p>
+<table class="infomation">
+    <tr class="info-title">
+      <th class="student-list">評価</th>
+      <td class="info-data">
+        <%= @submission.evaluation %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="student-list">コメント</th>
+      <td class="info-data">
+        <%= @submission.comment %>
+      </td>
+    </tr>
+  </table>
 
 
 <% end %>
+
+      <div class="text-center box-btn">
+        <%= link_to "トップページへ戻る", students_home_path, class: "btn btn-warning ml2" %>
+      </div>
+
+</div>

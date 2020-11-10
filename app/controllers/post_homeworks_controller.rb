@@ -1,13 +1,9 @@
 class PostHomeworksController < ApplicationController
+  before_action :authenticate_student!
+
   def index
   	@student = current_student
   	@post_homeworks = PostHomework.all
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def download
@@ -15,3 +11,4 @@ class PostHomeworksController < ApplicationController
   	send_data(@post_homework.file,:filename=>@post_homework.name)
   end
 end
+
