@@ -67,5 +67,8 @@ gem 'jquery-rails'
 
 gem 'pry-byebug'
 
-
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
