@@ -1,0 +1,45 @@
+<div class="teacher">
+
+  <div class="text-center">
+    <h4>
+      <%= @student.name %>さんの詳細情報</h4>
+  </div>
+
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="info-list">名前</th>
+      <td class="info-data">
+        <%= @student.name %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">学年クラス</th>
+      <td class="info-data">
+        <%= @student.grade %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">あいことば</th>
+      <td class="info-data">
+        <%= @student.keyword.words %>
+      </td>
+    </tr>
+  </table>
+
+
+  <div class="text-center">
+    <strong>あいことばを認証してください</strong>
+  </div>
+
+  <div class="text-center">
+    <%= form_with scope: :keyword, url: teachers_keyword_path(), method: :patch, local: true do |form| %>
+      <%= form.select :is_active, [ ["認証済み", "認証済み"], ["認証不可", "認証不可"] ], prompt: "ステータスを選択してください" %>
+        <%= form.submit "認証情報を更新する", class: "btn btn-success" %>
+          <% end %>
+  </div>
+
+  <div class="text-center box-btn keyword-btn">
+    <%= link_to "前ページへ戻る", teachers_keywords_path, class: "btn btn-success ml2" %>
+  </div>
+
+</div>

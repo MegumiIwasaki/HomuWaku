@@ -1,0 +1,31 @@
+<div class="teacher">
+  <div class="text-center box-btn">
+    <h4>マイページ</h4>
+  </div>
+
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="info-list">名前</th>
+      <td class="info-data">
+        <%= @teacher.name %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">学校</th>
+      <td class="info-data">
+        <%= @teacher.school %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="info-list">メールアドレス</th>
+      <td class="info-data">
+        <%= @teacher.email %>
+      </td>
+    </tr>
+  </table>
+
+  <div class="text-center box-btn">
+    <%= link_to "編集する", edit_teacher_path(@teacher), class: "btn btn-success ml2" %>
+      <%= link_to "前ページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+  </div>
+</div>

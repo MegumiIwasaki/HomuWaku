@@ -1,0 +1,68 @@
+<div class="teacher">
+
+  <div class="text-center">
+    <h4>提出された宿題一覧</h4>
+  </div>
+
+  <% @post_homeworks.each do |post_homework| %>
+
+    <div class="text-center sub-title">
+      <strong><%= post_homework.name %>の宿題解答</strong>
+    </div>
+
+    <% if post_homework.submissions.present? %>
+
+      <table class="hmwk text-center">
+        <tr class="hmwk-title">
+          <th class="hmwk-list">提出日</th>
+          <th class="hmwk-list">生徒名</th>
+          <th class="hmwk-list">提出ファイル</th>
+          <th class="hmwk-list">評価</th>
+          <th class="hmwk-list">評価詳細</th>
+        </tr>
+
+        <% post_homework.submissions.each do |submission| %>
+
+          <tr>
+            <td class="hmwk-data">
+              <%= submission.created_at.strftime("%Y/%m/%d") %>
+            </td>
+            <td class="hmwk-data">
+              <%= submission.student.name %>
+            </td>
+            <td class="hmwk-data">
+              <%= link_to 'download', teachers_submission_download_path(submission.id), class: "btn btn-success ml2" %>
+            </td>
+            <td class="hmwk-data">
+              <%= submission.evaluation %>
+            </td>
+            <% if submission.evaluation != "評価待ち" %>
+              <td class="hmwk-data">
+                <%= link_to '評価を確認', teachers_submission_path(submission.id), class: "btn btn-success ml2" %>
+              </td>
+              <% else %>
+                <td class="hmwk-data">
+                  <%= link_to '評価する', teachers_submission_path(submission.id), class: "btn btn-success ml2" %>
+                </td>
+                <% end %>
+          </tr>
+
+          <% end %>
+
+      </table>
+
+      <% else %>
+
+        <div class="text-center">
+          <strong>提出なし</strong>
+        </div>
+
+        <% end %>
+
+          <% end %>
+
+            <div class="text-center box-btn">
+              <%= link_to "前ページへ戻る", teachers_home_path, class: "btn btn-success ml2" %>
+            </div>
+
+</div>

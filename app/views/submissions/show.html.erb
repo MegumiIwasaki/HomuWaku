@@ -1,0 +1,45 @@
+<div class = "student">
+  <div class="text-center box-btn">
+    <h4><%= @submission.post_homework.name %>の宿題について</h4>
+  </div>
+
+  <table class="infomation">
+    <tr class="info-title">
+      <th class="student-list">ていしゅつした</br>ファイル</th>
+      <td class="info-data">
+        <%= link_to 'download', submission_download_path(@submission.id), class: "btn btn-warning" %>
+      </td>
+    </tr>
+  </table>
+
+
+<% if @submission.evaluation == "評価待ち" %>
+<div class="text-center box-btn submission-btn">先生が かくにんちゅうだよ！</div>
+
+<% else %>
+
+<div class="text-center box-btn submission-btn">先生が かくにんしたよ！</div>
+
+<table class="infomation">
+    <tr class="info-title">
+      <th class="student-list">評価</th>
+      <td class="info-data">
+        <%= @submission.evaluation %>
+      </td>
+    </tr>
+    <tr class="info-title">
+      <th class="student-list">コメント</th>
+      <td class="info-data">
+        <%= @submission.comment %>
+      </td>
+    </tr>
+  </table>
+
+
+<% end %>
+
+      <div class="text-center box-btn">
+        <%= link_to "トップページへ戻る", students_home_path, class: "btn btn-warning ml2" %>
+      </div>
+
+</div>

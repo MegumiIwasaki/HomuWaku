@@ -1,0 +1,53 @@
+<div class="teacher">
+  <div class="text-center">
+    <h4>トップページ</h4>
+  </div>
+
+
+  <div class="text-center">
+    <div class="card-deck">
+
+    <div class="card">
+       <%= image_tag "teacher.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>登録内容を確認</p>
+        <%= link_to "こちら", teacher_my_page_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= image_tag "post_hmwk.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>宿題投稿一覧</p>
+        <%= link_to "こちら", teachers_post_homeworks_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= image_tag "keyword.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>あいことば一覧</p>
+        <%= link_to "こちら", teachers_keywords_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= image_tag "submission_hmwk.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>提出された宿題</p>
+        <%= link_to "こちら", teachers_submissions_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= image_tag "student.jpg", class: "card-img-top", alt: "icon" %>
+      <div class="card-body">
+        <p>生徒一覧</p>
+        <%= link_to "こちら", teachers_students_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+</div>

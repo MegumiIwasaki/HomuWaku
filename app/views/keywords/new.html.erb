@@ -1,0 +1,15 @@
+<div class="student">
+
+  <div class="text-center">
+    <h4>あいことば を とうろくしよう！</h4>
+  </div>
+
+  <div class="text-center">
+    <%= form_with model: @keyword, local: true do |form| %>
+      <%= form.text_field :words %>
+        </br>
+        <%= form.submit "とうろくする", class: "btn btn-warning teacher-icon-box" %>
+          <% end %>
+  </div>
+
+</div>

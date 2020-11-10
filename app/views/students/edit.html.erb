@@ -1,0 +1,40 @@
+<div class="student">
+  <div class="text-center box-btn">
+
+  	<h4>登録情報の編集</h4>
+  	<h4>★かぞくの人といっしょにやろう！★</h4>
+
+    <%= form_with model: @student, url: {controller: 'students', action: 'update' }, local: true  do |form| %>
+      <table class="infomation">
+        <tr class="info-title">
+          <th class="student-list">名前</th>
+          <td class="info-data">
+            <%= form.text_field :name, :placeholder =>"#{@student.name}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">学校</th>
+          <td class="info-data">
+            <%= form.text_field :school, :placeholder =>"#{@student.school}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">学年クラス(全角)</th>
+          <td class="info-data">
+            <%= form.text_field :grade, :placeholder =>"#{@student.grade}" %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="student-list">かぞくの</br>メールアドレス</th>
+          <td class="info-data">
+            <%= form.email_field :email, autocomplete: "email", :placeholder =>"#{@student.email}" %>
+          </td>
+        </tr>
+      </table>
+
+        <%= form.submit "編集内容を更新",class: "btn btn-warning teacher-icon-box" %>
+        <%= link_to "前ページへ戻る", student_my_page_path, class: "btn btn-warning ml2" %>
+    <% end %>
+
+  </div>
+</div>

@@ -1,1 +1,40 @@
-<h1>Hello</h1>
+<div class="container-fluid about">
+  <div class="row">
+
+  	<div class="col-md-6 box">
+  		<div class = "text-center">
+  		   <%= image_tag "icon.PNG", :size =>'100x100', class: "top-icon", alt: "icon" %>
+  	    </div>
+
+  		<div class ="text-center text">
+           <p>おうちで宿題を投稿、提出、評価する。</p>
+ 　　       <p>先生と生徒のためのサイト。</p>
+        </div>
+
+　　　<%= link_to new_teacher_session_path do %>
+       <div class="list-group">
+        <div class="list-group-item list-group-item-success list-group-item-action teacher-box text-center">
+      	  <%= image_tag "top_teacher.PNG", :size =>'100x100', alt: "teacher" %>
+          <div class = "text-center"><h4>先生はこちら</h4></div>
+        </div>
+       </div>
+     <% end %>
+
+      <%= link_to new_student_session_path do %>
+       <div class="list-group">
+         <div class="list-group-item list-group-item-warning list-group-item-action student-box text-center">
+      	    <%= image_tag "top_student.PNG", :size =>'100x100', alt: "student" %>
+            <div class = "text-center"><h4>生徒はこちら</h4></div>
+         </div>
+         </div>
+         <% end %>
+
+       </div>
+
+   <div class="col-md-6">
+
+   </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,252 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+
+ /* common */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header{
+   background-color: #fff;
+   padding: 10px;
+}
+
+footer{
+	background-color: #000;
+	color: #fff;
+}
+
+.icon{
+	margin: 0 auto;
+	float: left;
+}
+
+h2, p{
+	margin-bottom: 0rem;
+}
+
+.box{
+	background-color: rgba(0,0,0,0.5);
+	background-size: cover;
+}
+
+.text{
+    color: #fff;
+    font-weight: 500;
+}
+
+.top-icon, .teacher-box, .student-box{
+	margin: 30px auto;
+}
+
+.box-btn{
+	padding: 20px;
+}
+
+.box-btn:first-child {
+	padding-top: 50px;
+	padding-bottom: 0px;
+}
+
+.teacher-icon-box, .student-icon-box{
+	margin: 10px auto;
+}
+
+.student-box{
+}
+
+.thema{
+	height: 30px;
+}
+
+.about{
+   background-image: image-url("top_1.jpg");
+   background-size: cover;
+}
+
+.teacher{
+   background-image: image-url("teacher.PNG");
+   background-size: cover;
+   padding: 100px;
+}
+
+.student{
+   background-image: image-url("student.PNG");
+   background-size: cover;
+   padding: 100px;
+}
+
+.list-group-item:last-child{
+	margin-bottom: 80px;
+}
+
+.login{
+   padding-top: 140px;
+   padding-bottom: 50px;
+   background-image: image-url("login.jpg");
+   background-size: cover;
+}
+
+.list-group{
+	width: 50%;
+	margin: 0 auto;
+}
+
+.login-box{
+	margin-top: 100px;
+}
+
+.logout-box{
+	margin-right: 30px;
+	margin-top: 20px;
+	float: right;
+}
+
+.title{
+	font-weight: 200;
+}
+
+.infomation{
+    border-collapse: collapse;
+    margin: 30px auto;
+    width: 40%;
+}
+
+.info-title{
+    border-bottom: solid 2px white;
+}
+
+.info-title:last-child{
+    border-bottom: none;
+}
+
+.info-list{
+    position: relative;
+    text-align: left;
+    width: 30%;
+    background-color: #52cc52;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.info-list:after{
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top:calc(50% - 10px);
+    right:-10px;
+    border-left: 10px solid #52cc52;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.info-data{
+    width: 70%;
+    text-align: center;
+    background-color: #eee;
+    padding: 10px 0;
+}
+
+.hmwk{
+  border-collapse: collapse;
+  margin: 20 auto;
+  padding: 0;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px -6px #00000073;
+  background-color: #fff;
+}
+
+.hmwk-title{
+  width: 20%;
+  padding: 20px 0;
+  background-color: #fff;
+  color:#3a3a3a;
+}
+
+.hmwk-list{
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  width: 20%;
+  padding: 10px 0;
+  font-size: 14px;
+  padding: 15px;
+  background-color: #52cc52;
+  color:#fff;
+}
+
+.hmwk-data{
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+
+}
+
+.post{
+  padding: 50px;
+}
+
+.btn-post{
+  margin-bottom: 50px;
+}
+
+.keyword-btn, .submission-btn{
+  padding-bottom: 0px;
+}
+
+.sub-title{
+  padding-top: 50px;
+}
+
+.student-color{
+  background-color: #ffd700;
+  color:#000;
+}
+
+.student-list{
+    position: relative;
+    text-align: left;
+    width: 30%;
+    background-color: #ffd700;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.student-list:after{
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top:calc(50% - 10px);
+    right:-10px;
+    border-left: 10px solid #ffd700;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}

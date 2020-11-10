@@ -1,0 +1,28 @@
+<div class = "student">
+
+  <div class="text-center box-btn">
+    <h4><%= @post_homework.name %>の宿題 を ていしゅつ する</h4>
+  </div>
+
+
+  <%= form_with model: @submission, url: create_submission_path(@post_homework.id), local: true do |form| %>
+
+  <table class="infomation">
+      <tr class="info-title">
+      <th class="student-list">ファイル</th>
+      <td class="info-data">
+        <%= form.file_field :file %>
+      </td>
+    </tr>
+  </table>
+
+    <div class="text-center box-btn">
+       <%= form.submit "ていしゅつ する", class: "btn btn-warning ml2" %>
+    </div>
+  <% end %>
+
+      <div class="text-center box-btn">
+        <%= link_to "前ページへ戻る", post_homeworks_path, class: "btn btn-warning ml2" %>
+      </div>
+
+</div>

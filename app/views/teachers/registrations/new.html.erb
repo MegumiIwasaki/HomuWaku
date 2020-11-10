@@ -1,0 +1,48 @@
+<div class="text-center login">
+  <div class="list-group">
+    <div class="list-group-item list-group-item-success login-box">
+
+      <%= image_tag "top_teacher.PNG", :size =>'70x70', class: "teacher-icon-box", alt: "teacher" %>
+　　　　<h3>登録 画面</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "teachers/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <strong>名前</strong><br />
+    <%= f.text_field :name, autofocus: true, :placeholder =>"山田太郎" %>
+  </div>
+
+  <div class="field">
+    <strong>学校名</strong><br />
+    <%= f.text_field :school, autofocus: true, :placeholder =>"あいうえお小学校" %>
+  </div>
+
+  <div class="field">
+    <strong>メールアドレス</strong><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder =>"sennsei@homuwaku.com" %>
+  </div>
+
+  <div class="field">
+    <strong>パスワード</strong><br />
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <strong>パスワード(確認)</strong><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録する",class: "btn btn-success teacher-box" %>
+  </div>
+<% end %>
+
+<%= render "teachers/shared/links" %>
+
+    </div>
+  </div>
+</div>
