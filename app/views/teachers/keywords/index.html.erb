@@ -4,7 +4,6 @@
     <h4>未認証のあいことば一覧</h4>
   </div>
 
-  <% if @check %>
 
     <table class="hmwk text-center">
       <tr class="hmwk-title">
@@ -14,6 +13,7 @@
       </tr>
 
       <% @students.each do |student| %>
+       <% if student.keyword.present? %>
         <% if student.keyword.is_active == "未認証" %>
           <tr>
             <td class="hmwk-data">
@@ -26,18 +26,11 @@
               <%= student.email %>
             </td>
           </tr>
-
           <% end %>
-            <% end %>
+         <% end %>
+        <% end %>
     </table>
 
-    <% else %>
-
-      <div class="text-center box-btn">
-        <h4>未認証のあいことばはありません。</h4>
-      </div>
-
-      <% end %>
 
         <div class="text-center box-btn">
           <h4>認証済みのあいことば一覧</h4>
@@ -52,6 +45,7 @@
           </tr>
 
           <% @students.each do |student| %>
+           <% if student.keyword.present? %>
             <% if student.keyword.is_active != "未認証" %>
 
               <tr>
@@ -70,7 +64,8 @@
               </tr>
 
               <% end %>
-                <% end %>
+            <% end %>
+           <% end %>
         </table>
 
         <div class="text-center box-btn">

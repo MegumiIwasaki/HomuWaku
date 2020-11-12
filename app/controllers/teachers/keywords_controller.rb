@@ -4,7 +4,6 @@ class Teachers::KeywordsController < ApplicationController
   def index
   	@teacher = current_teacher
   	@students = Student.where(school: @teacher.school)
-    @check = @students.any?{|student| student.keyword.is_active == "未認証" }
   end
 
   def show
