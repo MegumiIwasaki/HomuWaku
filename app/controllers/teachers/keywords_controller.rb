@@ -11,7 +11,8 @@ class Teachers::KeywordsController < ApplicationController
   end
 
   def update
-  	@keyword = Keyword.find(params[:id])
+    @student = Student.find(params[:id])
+  	@keyword = Keyword.find(@student.keyword.id)
   	@keyword.update(keyword_params)
   	redirect_to teachers_home_path
   end
