@@ -5,23 +5,22 @@
   </div>
 
 
-  <table class="infomation">
-    <tr class="info-title">
-      <th class="info-list">宿題名</th>
-      <td class="info-data">
-        <%= @submission.post_homework.name %>
-      </td>
-    </tr>
-    <tr class="info-title">
-      <th class="info-list">生徒名</th>
-      <td class="info-data">
-        <%= @submission.student.name %>
-      </td>
-    </tr>
+  <% if @submission.evaluation == "評価待ち" %>
+    <%= form_with model: @submission, url: {controller: 'teachers/submissions', action: 'update' }, local: true do |form| %>
 
-    <% if @submission.evaluation == "評価待ち" %>
-      <%= form_with model: @submission, url: {controller: 'teachers/submissions', action: 'update' }, local: true do |form| %>
-
+      <table class="infomation">
+        <tr class="info-title">
+          <th class="info-list">宿題名</th>
+          <td class="info-data">
+            <%= @submission.post_homework.name %>
+          </td>
+        </tr>
+        <tr class="info-title">
+          <th class="info-list">生徒名</th>
+          <td class="info-data">
+            <%= @submission.student.name %>
+          </td>
+        </tr>
         <tr class="info-title">
           <th class="info-list">評価</th>
           <td class="info-data">
@@ -34,34 +33,45 @@
             <%= form.text_field :comment %>
           </td>
         </tr>
-  </table>
-
-       <div class="text-center">
-         <%= form.submit "評価内容を登録する",class: "btn btn-success teacher-icon-box"%>
-       </div>
-    <% end %>
-
-      <% else %>
-
-        <tr class="info-title">
-          <th class="info-list">評価</th>
-          <td class="info-data">
-            <%= @submission.evaluation %>
-          </td>
-        </tr>
-        <tr class="info-title">
-          <th class="info-list">コメント</th>
-          <td class="info-data">
-            <%= @submission.comment %>
-          </td>
-        </tr>
-        </table>
-
-        <% end %>
+      </table>
 
 
-          <div class="text-center box-btn">
-            <%= link_to "前ページへ戻る", teachers_submissions_path, class: "btn btn-success ml2" %>
-          </div>
+      <div class="text-center">
+        <%= form.submit "評価内容を登録する",class: "btn btn-success teacher-icon-box"%>
+      </div>
+      <% end %>
+
+        <% else %>
+          <table class="infomation">
+            <tr class="info-title">
+              <th class="info-list">宿題名</th>
+              <td class="info-data">
+                <%= @submission.post_homework.name %>
+              </td>
+            </tr>
+            <tr class="info-title">
+              <th class="info-list">生徒名</th>
+              <td class="info-data">
+                <%= @submission.student.name %>
+              </td>
+            </tr>
+            <tr class="info-title">
+              <th class="info-list">評価</th>
+              <td class="info-data">
+                <%= @submission.evaluation %>
+              </td>
+            </tr>
+            <tr class="info-title">
+              <th class="info-list">コメント</th>
+              <td class="info-data">
+                <%= @submission.comment %>
+              </td>
+            </tr>
+          </table>
+          <% end %>
+
+            <div class="text-center box-btn">
+              <%= link_to "前ページへ戻る", teachers_submissions_path, class: "btn btn-success ml2" %>
+            </div>
 
 </div>
