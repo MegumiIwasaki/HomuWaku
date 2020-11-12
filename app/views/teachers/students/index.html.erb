@@ -11,8 +11,8 @@
     </tr>
 
     <% @students.each do |student| %>
-      <% if student.keyword.is_active == "認証済み" %>
-
+      <% if student.keyword.present? %>
+        <% if student.keyword.is_active == "認証済み" %>
         <tr>
           <td class="hmwk-data">
             <%= student.name %>
@@ -22,11 +22,12 @@
           </td>
           <td class="hmwk-data">
             <%= student.email %>
+
           </td>
         </tr>
         <% end %>
-
-          <% end %>
+        <% end %>
+      <% end %>
   </table>
 
   <div class="text-center box-btn">
